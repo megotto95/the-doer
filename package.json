@@ -1,0 +1,17 @@
+{
+  "name": "the-doer",
+  "version": "1.0.0",
+  "description": "to-do list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Meghan Otto",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.89.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}
