@@ -1,9 +1,9 @@
-function ToDo(name) {
+function ToDo(name, desc, date, priority) {
     const title = name
-    const desc = "Project Description Here"
-    const dueDate = "01/01/2000"
-    const priority = 1
-    return {title, desc, dueDate, priority}
+    const descript = desc
+    const dueDate = date
+    const itemPriority = priority
+    return {title, descript, dueDate, itemPriority}
 }
 
 export default ToDo
