@@ -1,5 +1,6 @@
 import ToDo from "./createToDo"
 import openProjectDetail from "./openProject"
+import "./style.css"
 
 const createToDo = ToDo
 const openProject = openProjectDetail
@@ -28,7 +29,10 @@ function screenController() {
     const projectActions = projects()
     
     const projectButton = document.createElement('button')
-    const content = document.querySelector("#content")
+    const content = document.createElement("div")
+    content.id = "content"
+    const body = document.querySelector('body')
+    body.appendChild(content)
     const sidebar = document.createElement('div')
     const header = document.createElement('div')
     const Project1 = document.createElement('div')
@@ -57,7 +61,8 @@ function screenController() {
         projectDiv.classList.add('project')
         projectDiv.dataset.index = index
         projectDiv.textContent = `${project.title}`
-        projectDiv.addEventListener('click', (e) => projectAddItem(e))
+        projectDiv.addEventListener('click', () => 
+            openProject(project))
         sidebar.appendChild(projectDiv)
         } )
         

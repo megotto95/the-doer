@@ -1,5 +1,6 @@
 function openProjectDetail(project) {
     const projectDetail = document.querySelector('.details')
+    projectDetail.innerHTML = ""
     const projectName = document.createElement('header')
     projectName.textContent = `${project.title}`
     projectDetail.appendChild(projectName)

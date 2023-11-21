@@ -2,16 +2,19 @@
   "name": "the-doer",
   "version": "1.0.0",
   "description": "to-do list",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "Meghan Otto",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
     "webpack": "^5.89.0"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.3",
     "webpack-cli": "^5.1.4"
   }
 }
