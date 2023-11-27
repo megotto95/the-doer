@@ -11,8 +11,8 @@ const projects = function(){
     function addProject(projTitle) {   
             const title = projTitle
             const toDos = []
-            function newToDo(title) {
-                const addedToDo = createToDo(title, 'desc', 'date', 'priority')
+            function newToDo(title, desc, date, priority) {
+                const addedToDo = createToDo(title, desc, date, priority)
                 console.log(addedToDo)
                 toDos.push(addedToDo)
                 console.log(toDos)
@@ -61,8 +61,10 @@ function screenController() {
         projectDiv.classList.add('project')
         projectDiv.dataset.index = index
         projectDiv.textContent = `${project.title}`
-        projectDiv.addEventListener('click', () => 
-            openProject(project))
+        projectDiv.addEventListener('click', () => {
+            openProject(project)
+            }
+            )
         sidebar.appendChild(projectDiv)
         } )
         
@@ -81,8 +83,8 @@ function screenController() {
         pageLoad()
     }
 
-    function projectAddItem(e) {
-        const index = e.target.dataset.index
+    function projectAddItem(i) {
+        const index = i
         const newItem = projectList[index].newToDo(projectList[index].title)
         projectList[index].toDos.push(newItem)
         console.log(projectList[index])
