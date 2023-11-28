@@ -23,6 +23,9 @@ const projects = function(){
 }
 
 
+function addStorage(projectlist) {
+    localStorage.setItem("projectList", JSON.stringify(projectlist))
+}
 
 
 function screenController() {
@@ -37,12 +40,14 @@ function screenController() {
     const header = document.createElement('div')
     const Project1 = document.createElement('div')
     const projectDetails = document.createElement('div')
+    
     const projectList = projectActions.getProjectList()
     projectList.push(projectActions.addProject("General To-Dos"))
     pageLoad()
 
     function pageLoad() {
         const projectList = projectActions.getProjectList()
+        addStorage(projectList)
         content.innerHTML = ""
         sidebar.innerHTML = ""
         header.classList.add('header')
@@ -62,7 +67,23 @@ function screenController() {
         projectDiv.dataset.index = index
         projectDiv.textContent = `${project.title}`
         projectDiv.addEventListener('click', () => {
+            projectDetails.innerHTML = ""
+            const projectHeader = document.createElement('div')
+            projectHeader.textContent = `${project.title}`
+            projectDetails.appendChild(projectHeader)
             openProject(project)
+            const newToDoButton = document.createElement('button')
+            newToDoButton.textContent = "Add to-do item"
+            projectDetails.appendChild(newToDoButton)
+            newToDoButton.addEventListener("click", () => {
+                const title = prompt("to-do title")
+                const date = prompt('What is the due date?')
+                const desc = prompt('Short description')
+                const priority = prompt ('Priority 1 - 5')
+                project.newToDo(title, desc, date, priority)
+                addStorage(projectList)
+                openProject(project)
+            })
             }
             )
         sidebar.appendChild(projectDiv)
