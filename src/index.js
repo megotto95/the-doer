@@ -43,12 +43,11 @@ function screenController() {
     const listDiv = document.createElement('div')
     
     
-    const projectList = projectActions.getProjectList()
+    let projectList = projectActions.getProjectList()
     projectList.push(projectActions.addProject("General To-Dos"))
     pageLoad()
 
     function pageLoad() {
-        let projectList = []
         if (localStorage.getItem("projectList") !== null){
         let projectListString = localStorage.getItem("projectList")
         projectList = JSON.parse(projectListString)
@@ -121,13 +120,7 @@ function screenController() {
         pageLoad()
     }
 
-    function projectAddItem(i) {
-        const index = i
-        const newItem = projectList[index].newToDo(projectList[index].title)
-        projectList[index].toDos.push(newItem)
-        console.log(projectList[index])
-        pageLoad()
-    }
+
 
 
     projectButton.addEventListener("click", () => projectAddClick())
