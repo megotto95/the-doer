@@ -11,7 +11,7 @@ const projects = function(){
     function addProject(projTitle) {   
             const title = projTitle
             const toDos = []
-            function newToDo(title, desc, date, priority) {
+            const newToDo = function(title, desc, date, priority) {
                 const addedToDo = createToDo(title, desc, date, priority)
                 console.log(addedToDo)
                 toDos.push(addedToDo)
@@ -40,14 +40,26 @@ function screenController() {
     const header = document.createElement('div')
     const Project1 = document.createElement('div')
     const projectDetails = document.createElement('div')
+    const listDiv = document.createElement('div')
+    
     
     const projectList = projectActions.getProjectList()
     projectList.push(projectActions.addProject("General To-Dos"))
     pageLoad()
 
     function pageLoad() {
-        const projectList = projectActions.getProjectList()
-        addStorage(projectList)
+        let projectList = []
+        if (localStorage.getItem("projectList") !== null){
+        let projectListString = localStorage.getItem("projectList")
+        projectList = JSON.parse(projectListString)
+        projectList.forEach((project) => {
+            project.newToDo = function(title, desc, date, priority) {
+                const addedToDo = createToDo(title, desc, date, priority)
+                console.log(addedToDo)
+                project.toDos.push(addedToDo)
+                console.log(project.toDos)
+        } })
+        }
         content.innerHTML = ""
         sidebar.innerHTML = ""
         header.classList.add('header')
@@ -56,10 +68,13 @@ function screenController() {
         Project1.classList.add('project')
         sidebar.classList.add('sidebar')
         projectDetails.classList.add('details')
+        listDiv.classList.add('listDiv')
         content.appendChild(sidebar)
         content.appendChild(projectDetails)
+
        
         console.log(projectList)
+        console.log(typeof(projectList))
 
         projectList.forEach((project, index) => {
         const projectDiv = document.createElement('div')
@@ -71,6 +86,7 @@ function screenController() {
             const projectHeader = document.createElement('div')
             projectHeader.textContent = `${project.title}`
             projectDetails.appendChild(projectHeader)
+            projectDetails.appendChild(listDiv)
             openProject(project)
             const newToDoButton = document.createElement('button')
             newToDoButton.textContent = "Add to-do item"
@@ -101,6 +117,7 @@ function screenController() {
         const projectName = prompt("Enter Project Name")
         const newProject = projectActions.addProject(projectName)
         projectList.push(newProject)
+        addStorage(projectList)
         pageLoad()
     }
 

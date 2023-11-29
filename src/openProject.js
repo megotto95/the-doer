@@ -1,5 +1,6 @@
 function openProjectDetail(project) {
-    const projectDetail = document.querySelector('.details')
+    const listDiv = document.querySelector('.listDiv')
+    listDiv.innerHTML = ""
     const toDoList = document.createElement('ul')
     const projectToDo = project.toDos
     function listLoad() {
@@ -10,8 +11,7 @@ function openProjectDetail(project) {
         toDoList.appendChild(toDoItem)
     }
     )}
-    projectDetail.appendChild(toDoList)
-
+    listDiv.appendChild(toDoList)
 
     listLoad()
 }
