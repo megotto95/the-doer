@@ -15,6 +15,7 @@
 .sidebar {
     grid-column: 1 / span 1;
     background-color: rgb(159, 157, 157);
+    height: 100vh
 }
 
 .project {
@@ -29,4 +30,18 @@
 
 .details {
     padding: 5%;
+}
+
+.todo {
+    padding: 5%;
+    color: darkorchid;
+}
+
+.todo:hover {
+    background-color: black;
+}
+
+.header {
+    color: green;
+    font-size: 2rem;
 }

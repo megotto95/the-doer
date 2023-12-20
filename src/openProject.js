@@ -11,6 +11,7 @@ function openProjectDetail(project) {
         toDoList.innerHTML = ""
         projectToDo.forEach(todo => {
         const toDoItem = document.createElement('li')
+        toDoItem.classList.add("todo")
         toDoItem.textContent = `${todo.title} due ${todo.dueDate}`
         toDoItem.addEventListener("click", () => {
             
